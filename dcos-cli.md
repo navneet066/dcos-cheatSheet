@@ -128,5 +128,28 @@ When you create a service in DCOS, You can discover by two ways:
 ```
 dig @<dcos-web-URL> hello-world.marathon.mesos
 ```
+where hello-world is the app name.
+output of the above command will be similar to below:
 
-output of the 
+```
+; <<>> DiG 9.10.6 <<>> @<dcos-web-url> hello-world.marathon.mesos
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35161
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;hello-world.marathon.mesos.	IN	A
+
+;; ANSWER SECTION:
+hello-world.marathon.mesos. 60	IN	A	172.31.2.2
+hello-world.marathon.mesos. 60	IN	A	172.31.2.13
+
+;; Query time: 147 msec
+;; SERVER: 172.30.2.2#53(172.30.2.2)
+;; WHEN: Fri Jul 12 16:10:00 IST 2019
+;; MSG SIZE  rcvd: 76
+```
+
+
