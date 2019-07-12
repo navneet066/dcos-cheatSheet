@@ -120,3 +120,11 @@ Start the service by running the following command:
 dcos marathon app add container-app-cli.json
 
 ```
+
+## DCOS Service Discovery
+When you create a service in DCOS, You can discover by two ways:
+
+#### 1. Using Mesos-DNS
+```
+dig @<dcos-web-URL> hello-world.marathon.mesos
+```
