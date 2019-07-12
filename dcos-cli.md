@@ -52,6 +52,10 @@ dcos task log <taskName>
 ```
 dcos node ssh --master-proxy --mesos-id=dedbb786-feb7-47f2-ae69-27bf86ba53fb-S0
 ```
+```
+dcos node ssh --master-proxy --leader
+```
+
 #### 13. Deploy the sample app
 ```
 dcos marathon app add https://raw.githubusercontent.com/joerg84/dcos-101/master/app1/app1.json
