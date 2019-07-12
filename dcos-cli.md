@@ -128,3 +128,5 @@ When you create a service in DCOS, You can discover by two ways:
 ```
 dig @<dcos-web-URL> hello-world.marathon.mesos
 ```
+
+output of the 
