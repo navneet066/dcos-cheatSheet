@@ -125,6 +125,8 @@ dcos marathon app add container-app-cli.json
 When you create a service in DCOS, You can discover by two ways:
 
 #### 1. Using Mesos-DNS
+
+##### Finding the host address
 ```
 dig @<dcos-web-URL> hello-world.marathon.mesos
 ```
@@ -150,6 +152,38 @@ hello-world.marathon.mesos. 60	IN	A	172.31.2.13
 ;; SERVER: 172.30.2.2#53(172.30.2.2)
 ;; WHEN: Fri Jul 12 16:10:00 IST 2019
 ;; MSG SIZE  rcvd: 76
+```
+
+##### Finding the host service port (SRV) record
+```
+dig @<dcos-web-url> _hello-world._tcp.marathon.mesos SRV
+```
+
+output of the above command will be similar to below:
+
+```
+; <<>> DiG 9.10.6 <<>> @<dcos-web-url> _hello-world._tcp.marathon.mesos SRV
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25034
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 2
+
+;; QUESTION SECTION:
+;_hello-world._tcp.marathon.mesos. IN	SRV
+
+;; ANSWER SECTION:
+_hello-world._tcp.marathon.mesos. 60 IN	SRV	0 1 7819 hello-world-4jei4-s12.marathon.mesos.
+_hello-world._tcp.marathon.mesos. 60 IN	SRV	0 1 16794 hello-world-3x1xd-s0.marathon.mesos.
+
+;; ADDITIONAL SECTION:
+hello-world-3x1xd-s0.marathon.mesos. 60	IN A	172.31.2.13
+hello-world-4jei4-s12.marathon.mesos. 60 IN A	172.31.2.2
+
+;; Query time: 163 msec
+;; SERVER: 172.30.2.2#53(172.30.2.2)
+;; WHEN: Fri Jul 12 17:30:21 IST 2019
+;; MSG SIZE  rcvd: 193
 ```
 
 
